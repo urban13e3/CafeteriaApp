@@ -148,7 +148,35 @@ public class CartController implements Initializable {
             showError("Insufficient wallet balance.\n\n" +
                       "Order total: ₦" + String.format("%,.2f", cart.getTotal()) + "\n" +
                       "Your balance: ₦" + String.format("%,.2f", user.getAccountBalance()) + "\n\n" +
-                      "Please add funds in your Profile.");
+                      "Please add funds in your Wallet.");
+            return;
+        }
+        
+        // Check live stock for all items before placing order
+        try (Connection conn = DatabaseConnection.getConnect()) {
+            for (CartItem item : cart.getItems()) {
+                PreparedStatement stockCheck = conn.prepareStatement(
+                    "SELECT quantity_in_stock, name FROM menu_items WHERE id = ?"
+                );
+                stockCheck.setInt(1, item.getMenuItemId());
+                ResultSet stockRs = stockCheck.executeQuery();
+                if (stockRs.next()) {
+                    int available = stockRs.getInt("quantity_in_stock");
+                    String name = stockRs.getString("name");
+                    if (available <= 0) {
+                        showError(name + " is out of stock. Please remove it from your cart.");
+                        return;
+                    }
+                    if (item.getQuantity() > available) {
+                        showError("Only " + available + " portion(s) of " + name +
+                                 " available. Please reduce the quantity in your cart.");
+                        return;
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
+            showError("Failed to verify stock. Please try again.");
             return;
         }
 
@@ -196,6 +224,16 @@ public class CartController implements Initializable {
                 balanceStmt.setDouble(1, cart.getTotal());
                 balanceStmt.setInt(2, user.getId());
                 balanceStmt.executeUpdate();
+                
+                // Record transaction
+                PreparedStatement txStmt = conn.prepareStatement(
+                    "INSERT INTO transactions (user_id, type, amount, description) VALUES (?,?,?,?)"
+                );
+                txStmt.setInt(1, user.getId());
+                txStmt.setString(2, "debit");
+                txStmt.setDouble(3, cart.getTotal());
+                txStmt.setString(4, "Order #" + orderId);
+                txStmt.executeUpdate();
 
                 // Update session balance
                 user.setAccountBalance((float)(user.getAccountBalance() - cart.getTotal()));

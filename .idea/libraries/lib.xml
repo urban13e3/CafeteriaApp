@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx.swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jdk.jsobject.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/fontawesomefx-commons-9.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jfx.incubator.richtext.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/PostgreSQL 42.7.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx.base.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/Jakarta Activation 2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx.web.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jfx.incubator.input.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jbcrypt-0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx.graphics.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx.fxml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/Jakarta Mail 2.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx-swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/fontawesomefx-fontawesome-4.7.0-9.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx.media.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/javafx.controls.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -186,20 +186,37 @@ public class MenuController implements Initializable {
         addBtn.setMaxWidth(Double.MAX_VALUE);
 
         addBtn.setOnAction(e -> {
-        Cart cart = Cart.getInstance();
-        cart.addItem(item.getId(), item.getName(), item.getPrice(), qty[0]);
+        // Check live stock from DB before adding
+        try (Connection conn = DatabaseConnection.getConnect()) {
+            PreparedStatement checkStmt = conn.prepareStatement(
+                "SELECT quantity_in_stock FROM menu_items WHERE id = ?"
+            );
+            checkStmt.setInt(1, item.getId());
+            ResultSet checkRs = checkStmt.executeQuery();
+            if (checkRs.next()) {
+                int liveStock = checkRs.getInt("quantity_in_stock");
+                if (liveStock <= 0) {
+                    stockLabel.setText("Out of stock");
+                    addBtn.setText("Out of Stock");
+                    addBtn.setDisable(true);
+                    plusBtn.setDisable(true);
+                    minusBtn.setDisable(true);
+                    return;
+                }
+                if (qty[0] > liveStock) {
+                    qty[0] = liveStock;
+                    countLabel.setText(String.valueOf(qty[0]));
+                    priceLabel.setText("₦" + String.format("%,.2f", item.getPrice() * qty[0]));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Cart.getInstance().addItem(item.getId(), item.getName(), item.getPrice(), qty[0]);
 
         // Update displayed stock immediately
-        int remaining = item.getQuantity() - qty[0];
-        stockLabel.setText("In stock: " + remaining);
-
-        // Disable add button if out of stock
-        if (remaining <= 0) {
-            addBtn.setText("Out of Stock");
-            addBtn.setDisable(true);
-            plusBtn.setDisable(true);
-            return;
-        }
+        stockLabel.setText("In stock: " + (item.getQuantity() - qty[0]));
 
         addBtn.setText("Added ✓");
         addBtn.setDisable(true);
@@ -207,8 +224,28 @@ public class MenuController implements Initializable {
         new Thread(() -> {
             try { Thread.sleep(1500); } catch (InterruptedException ex) {}
             javafx.application.Platform.runLater(() -> {
-                addBtn.setText("Add to Cart");
-                addBtn.setDisable(false);
+                // Re-check stock after cooldown
+                try (Connection conn = DatabaseConnection.getConnect()) {
+                    PreparedStatement checkStmt = conn.prepareStatement(
+                        "SELECT quantity_in_stock FROM menu_items WHERE id = ?"
+                    );
+                    checkStmt.setInt(1, item.getId());
+                    ResultSet checkRs = checkStmt.executeQuery();
+                    if (checkRs.next()) {
+                        int liveStock = checkRs.getInt("quantity_in_stock");
+                        stockLabel.setText("In stock: " + liveStock);
+                        if (liveStock <= 0) {
+                            addBtn.setText("Out of Stock");
+                            addBtn.setDisable(true);
+                            plusBtn.setDisable(true);
+                        } else {
+                            addBtn.setText("Add to Cart");
+                            addBtn.setDisable(false);
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
         }).start();
     });

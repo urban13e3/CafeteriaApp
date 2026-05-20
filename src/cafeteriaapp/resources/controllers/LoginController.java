@@ -4,6 +4,7 @@
  */
 package cafeteriaapp.resources.controllers;
 
+import cafeteriaapp.Cart;
 import cafeteriaapp.DatabaseConnection;
 import cafeteriaapp.SceneManager;
 import cafeteriaapp.Session;
@@ -191,6 +192,7 @@ public class LoginController implements Initializable {
 
                     Session session = Session.getInstance();
                     session.setCurrentUser(user);
+                    Cart.getInstance().clear();
 
                     String role = user.getRole();
                     if ("manager".equals(role)) {
@@ -254,12 +256,13 @@ public class LoginController implements Initializable {
                         return false;
                     }
 
-                    stmt = connection.prepareStatement("INSERT INTO users(first_name, last_name, email, password) VALUES (?,?,?,?)");
-
+                    stmt = connection.prepareStatement("INSERT INTO users(first_name, last_name, email, password, role) VALUES (?,?,?,?,?)");
+                    
                     stmt.setString(1, firstName);
                     stmt.setString(2, lastName);
                     stmt.setString(3, email);
                     stmt.setString(4, hashedPassword);
+                    stmt.setString(5, "customer");
 
                     return stmt.executeUpdate() > 0;
 

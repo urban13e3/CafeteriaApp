@@ -26,6 +26,9 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Always start fresh on home
+        centerPane.getChildren().clear();
+        activeBtn = null;
         loadView("home-view.fxml");
         setActiveButton(homeBtn);
     }

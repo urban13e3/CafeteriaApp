@@ -62,6 +62,17 @@ public class WalletController implements Initializable {
                     PreparedStatement stmt = conn.prepareStatement(
                         "UPDATE users SET account_balance = account_balance + ? WHERE id = ?"
                     );
+                    
+                    // Record transaction
+                    PreparedStatement txStmt = conn.prepareStatement(
+                        "INSERT INTO transactions (user_id, type, amount, description) VALUES (?,?,?,?)"
+                    );
+                    txStmt.setInt(1, currentUser.getId());
+                    txStmt.setString(2, "credit");
+                    txStmt.setDouble(3, amount);
+                    txStmt.setString(4, "Wallet funded");
+                    txStmt.executeUpdate();
+                    
                     stmt.setDouble(1, amount);
                     stmt.setInt(2, currentUser.getId());
                     stmt.executeUpdate();
@@ -92,14 +103,9 @@ public class WalletController implements Initializable {
 
         try (Connection conn = DatabaseConnection.getConnect()) {
             PreparedStatement stmt = conn.prepareStatement(
-                "SELECT o.id, o.total_amount, o.created_at, " +
-                "STRING_AGG(oi.item_name || ' (' || oi.quantity || ' × ' || oi.unit_price || ')', ', ') as items " +
-                "FROM orders o " +
-                "JOIN order_items oi ON o.id = oi.order_id " +
-                "WHERE o.user_id = ? " +
-                "GROUP BY o.id, o.total_amount, o.created_at " +
-                "ORDER BY o.created_at DESC " +
-                "LIMIT 10"
+                "SELECT type, amount, description, created_at " +
+                "FROM transactions WHERE user_id = ? " +
+                "ORDER BY created_at DESC LIMIT 20"
             );
             stmt.setInt(1, currentUser.getId());
             ResultSet rs = stmt.executeQuery();
@@ -108,11 +114,14 @@ public class WalletController implements Initializable {
 
             while (rs.next()) {
                 hasTransactions = true;
-                double total = rs.getDouble("total_amount");
-                Timestamp ts = rs.getTimestamp("created_at");
-                String items = rs.getString("items");
-                String date = ts.toLocalDateTime()
+                String type = rs.getString("type");
+                double amount = rs.getDouble("amount");
+                String description = rs.getString("description");
+                String date = rs.getTimestamp("created_at")
+                        .toLocalDateTime()
                         .format(DateTimeFormatter.ofPattern("d MMM, yyyy hh:mma"));
+
+                boolean isCredit = "credit".equals(type);
 
                 HBox row = new HBox(12);
                 row.setAlignment(Pos.CENTER_LEFT);
@@ -123,28 +132,32 @@ public class WalletController implements Initializable {
                 iconBox.setAlignment(Pos.CENTER);
                 iconBox.setMinWidth(40);
                 iconBox.setMinHeight(40);
-                iconBox.setStyle("-fx-background-color: #f0f0f5; -fx-background-radius: 50;");
-                Label arrow = new Label("↗");
-                arrow.setStyle("-fx-font-size: 16px; -fx-text-fill: #1a1a2e;");
+                iconBox.setStyle("-fx-background-color: " +
+                    (isCredit ? "#e8f5e9" : "#fce4ec") +
+                    "; -fx-background-radius: 50;");
+                Label arrow = new Label(isCredit ? "↓" : "↑");
+                arrow.setStyle("-fx-font-size: 16px; -fx-text-fill: " +
+                    (isCredit ? "#4CAF50" : "#e53935") + ";");
                 iconBox.getChildren().add(arrow);
 
                 // Info
                 VBox info = new VBox(3);
                 HBox.setHgrow(info, Priority.ALWAYS);
 
-                // Truncate items string if too long
-                String displayItems = items.length() > 40 ? items.substring(0, 37) + "..." : items;
-                Label itemsLabel = new Label(displayItems);
-                itemsLabel.setStyle("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;");
+                Label descLabel = new Label(description);
+                descLabel.setStyle("-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;");
 
                 Label dateLabel = new Label(date);
                 dateLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: #888888;");
 
-                info.getChildren().addAll(itemsLabel, dateLabel);
+                info.getChildren().addAll(descLabel, dateLabel);
 
                 // Amount
-                Label amountLabel = new Label("-₦" + String.format("%,.0f", total));
-                amountLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #e53935;");
+                Label amountLabel = new Label(
+                    (isCredit ? "+" : "-") + "₦" + String.format("%,.2f", amount)
+                );
+                amountLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: " +
+                    (isCredit ? "#4CAF50" : "#e53935") + ";");
 
                 row.getChildren().addAll(iconBox, info, amountLabel);
                 transactionsContainer.getChildren().add(row);
@@ -164,7 +177,7 @@ public class WalletController implements Initializable {
     }
 
     private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
+            alert.showAndWait();
+        }
     }
-}
