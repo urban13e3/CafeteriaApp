@@ -1,0 +1,29 @@
+id,name,category,quantity,price,description,image
+1,Glass (35cl) Soft Drink,Drinks,92,300.00,Chilled assorted soft drinks in glass bottle (Coke / Fanta / Sprite),soft_drink.png
+2,Malta Guinness Can,Drinks,5,800.00,Rich malt drink served in a chilled can,malta_can.png
+3,Malta Guinness Glass,Drinks,19,800.00,Rich malt drink served in a glass bottle,malta_glass.png
+4,Zobo Drink (35cl),Drinks,68,600.00,Chilled hibiscus drink sweetened and spiced,zobo.png
+5,Water (50cl),Drinks,38,250.00,Chilled sachet or bottle water,water.png
+6,Chivita Juice (35cl),Drinks,44,500.00,Assorted fruit juice in chilled pack,juice.png
+7,Jollof Rice,Main Meal,60,1500.00,Party-style jollof rice served with fried plantain,jollof_rice.png
+8,Fried Rice,Main Meal,45,1500.00,Vegetable fried rice with carrots and green peas,fried_rice.png
+9,White Rice and Stew,Main Meal,50,1200.00,Plain white rice served with tomato beef stew,white_rice_stew.png
+10,Spaghetti Jollof,Main Meal,30,1400.00,Tomato-based jollof spaghetti with chicken,spaghetti.png
+11,Beans and Plantain,Main Meal,35,1200.00,Porridge beans served with fried ripe plantain,beans_plantain.png
+12,Yam and Egg Sauce,Main Meal,25,1300.00,Boiled yam served with spiced egg and pepper sauce,yam_egg.png
+13,Eba and Egusi Soup,Swallow,20,1800.00,Eba served with rich egusi soup and assorted meat,eba_egusi.png
+14,Amala and Ewedu,Swallow,18,1800.00,Amala served with ewedu soup and gbegiri,amala_ewedu.png
+15,Pounded Yam and Ofe Onugbu,Swallow,15,2000.00,Pounded yam served with bitter leaf soup,pounded_yam.png
+16,Semovita and Okra Soup,Swallow,22,1800.00,Semovita served with draw okra and assorted fish,semo_okra.png
+17,Grilled Chicken,Protein,40,2500.00,Seasoned whole chicken leg grilled to perfection,grilled_chicken.png
+18,Fried Chicken,Protein,55,2200.00,Crispy fried chicken piece marinated in spices,fried_chicken.png
+19,Beef Suya,Protein,60,1000.00,Spiced grilled beef skewers with onion and tomato,suya.png
+20,Boiled Egg (x2),Protein,80,300.00,Hard boiled eggs served plain or with pepper,boiled_egg.png
+21,Fried Fish,Protein,35,1500.00,Whole tilapia fish seasoned and deep fried,fried_fish.png
+22,Meat Pie,Snacks,12,1350.00,Baked pastry filled with seasoned minced meat and potato,meat_pie.png
+23,Sausage Roll,Snacks,30,600.00,Flaky pastry roll with seasoned sausage filling,sausage_roll.png
+24,Puff Puff (6 pieces),Snacks,50,500.00,Soft deep-fried dough balls lightly sweetened,puff_puff.png
+25,Chin Chin (pack),Snacks,70,400.00,Crunchy fried dough snack lightly sweetened,chin_chin.png
+26,Egg Roll,Snacks,40,700.00,Deep-fried pastry wrapped around a boiled egg,egg_roll.png
+27,Chapman,Drinks,25,1200.00,Nigerian cocktail with Fanta Orange and Ribena,chapman.png
+28,Smoothie (35cl),Drinks,20,1500.00,Fresh blended fruit smoothie of the day,smoothie.png

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="950.0"
+            stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cafeteriaapp.resources.controllers.ManagerDashboardController">
+
+    <!-- Header -->
+    <top>
+        <VBox style="-fx-background-color: #1a1a2e;" BorderPane.alignment="CENTER">
+            <padding><Insets top="20" bottom="20" left="24" right="24"/></padding>
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <children>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Manager Dashboard" textFill="WHITE">
+                                    <font><Font size="22.0"/></font>
+                                </Label>
+                                <Label text="Sancta Maria Cafeteria" textFill="#aaaaaa">
+                                    <font><Font size="13.0"/></font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <Button text="Logout" onAction="#handleLogout" styleClass="logout-btn"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="16" BorderPane.alignment="CENTER">
+            <padding><Insets top="20" left="24" right="24" bottom="20"/></padding>
+            <children>
+
+                <!-- Search + Add button row -->
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <children>
+                        <TextField fx:id="searchField" promptText="Search menu items..."
+                                   prefHeight="38" HBox.hgrow="ALWAYS"
+                                   style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #e0e0e0; -fx-padding: 0 10 0 10;"/>
+                        <Button text="+ Add Item" onAction="#handleAdd" styleClass="place-order-btn"/>
+                    </children>
+                </HBox>
+
+                <!-- Table -->
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <content>
+                        <TableView fx:id="menuTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colName" text="Name" prefWidth="220"/>
+                                <TableColumn fx:id="colCategory" text="Category" prefWidth="110"/>
+                                <TableColumn fx:id="colPrice" text="Price (₦)" prefWidth="110"/>
+                                <TableColumn fx:id="colStock" text="In Stock" prefWidth="90"/>
+                                <TableColumn fx:id="colDescription" text="Description" prefWidth="220"/>
+                                <TableColumn fx:id="colActions" text="Actions" prefWidth="160"/>
+                            </columns>
+                        </TableView>
+                    </content>
+                </ScrollPane>
+
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>

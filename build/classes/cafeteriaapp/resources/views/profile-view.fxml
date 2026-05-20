@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+
+<BorderPane prefHeight="654.0" prefWidth="904.0"
+            stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cafeteriaapp.resources.controllers.ProfileController">
+
+    <center>
+        <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+            <content>
+                <VBox spacing="0">
+                    <padding><Insets top="40" bottom="40" left="40" right="40"/></padding>
+                    <children>
+
+                        <!-- Avatar + Name -->
+                        <VBox alignment="CENTER" spacing="10">
+                            <VBox.margin><Insets bottom="30"/></VBox.margin>
+                            <children>
+                                <StackPane>
+                                    <children>
+                                        <VBox alignment="CENTER"
+                                              style="-fx-background-color: #1a1a2e; -fx-background-radius: 50; -fx-min-width: 80; -fx-min-height: 80; -fx-max-width: 80; -fx-max-height: 80;">
+                                            <children>
+                                                <Label fx:id="initialsLabel" text="?"
+                                                       style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </StackPane>
+                                <Label fx:id="fullNameLabel" text="—"
+                                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1a1a2e;"/>
+                                <Label fx:id="roleLabel" text="—"
+                                       style="-fx-font-size: 13px; -fx-text-fill: #888888;"/>
+                            </children>
+                        </VBox>
+
+                        <!-- Menu rows card -->
+                        <VBox styleClass="order-card" spacing="0">
+                            <children>
+                                <!-- Profile Details row -->
+                                <HBox alignment="CENTER_LEFT" spacing="16"
+                                      onMouseClicked="#handleProfileDetails"
+                                      style="-fx-cursor: hand; -fx-padding: 16;">
+                                    <children>
+                                        <FontAwesomeIconView glyphName="USER_CIRCLE" size="20" fill="#1a1a2e"/>
+                                        <Label text="Profile Details" HBox.hgrow="ALWAYS"
+                                               style="-fx-font-size: 15px; -fx-text-fill: #1a1a2e;"/>
+                                        <FontAwesomeIconView glyphName="CHEVRON_RIGHT" size="14" fill="#888888"/>
+                                    </children>
+                                </HBox>
+                                <Separator/>
+                                <!-- Security row -->
+                                <HBox alignment="CENTER_LEFT" spacing="16"
+                                      onMouseClicked="#handleSecurity"
+                                      style="-fx-cursor: hand; -fx-padding: 16;">
+                                    <children>
+                                        <FontAwesomeIconView glyphName="LOCK" size="20" fill="#1a1a2e"/>
+                                        <Label text="Security" HBox.hgrow="ALWAYS"
+                                               style="-fx-font-size: 15px; -fx-text-fill: #1a1a2e;"/>
+                                        <FontAwesomeIconView glyphName="CHEVRON_RIGHT" size="14" fill="#888888"/>
+                                    </children>
+                                </HBox>
+                                <Separator/>
+                                <!-- Logout row -->
+                                <HBox alignment="CENTER_LEFT" spacing="16"
+                                      onMouseClicked="#handleLogout"
+                                      style="-fx-cursor: hand; -fx-padding: 16;">
+                                    <children>
+                                        <FontAwesomeIconView glyphName="SIGN_OUT" size="20" fill="#e53935"/>
+                                        <Label text="Logout"
+                                               style="-fx-font-size: 15px; -fx-text-fill: #e53935; -fx-font-weight: bold;"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

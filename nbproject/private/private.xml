@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/order-history.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/login.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/cart.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/LoginController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/OrderHistoryController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/DashboardController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/SceneManager.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/DatabaseConnection.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/css/styles.css</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/manager-dashboard.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/CartItem.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/wallet-view.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/User.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/Cart.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/CafeteriaApp.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/MenuController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/home-view.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/HomeTabController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/profile-view.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/CartController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/menu.fxml</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/ManagerDashboardController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/controllers/ProfileController.java</file>
+            <file>file:/Users/kolawoleagbolade/NetBeansProjects/CafeteriaApp/src/cafeteriaapp/resources/views/dashboard.fxml</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="654.0" minWidth="904.0"
+            prefHeight="654.0" prefWidth="904.0"
+            stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cafeteriaapp.resources.controllers.DashboardController">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="904.0" spacing="60.0"
+            styleClass="bottom-menu" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" spacing="4" onMouseClicked="#handleHomeBtn">
+               <children>
+                  <FontAwesomeIconView fx:id="homeBtn" fill="#888888" glyphName="HOME" size="22"/>
+                  <Label text="Home" style="-fx-font-size: 10px; -fx-text-fill: #888888;"/>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="4" onMouseClicked="#handleWalletBtn">
+               <children>
+                  <FontAwesomeIconView fx:id="walletBtn" fill="#888888" glyphName="SHOPPING_CART" size="22"/>
+                  <Label text="Cart" style="-fx-font-size: 10px; -fx-text-fill: #888888;"/>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="4" onMouseClicked="#handleOrdersBtn">
+               <children>
+                  <FontAwesomeIconView fx:id="ordersBtn" fill="#888888" glyphName="FILE" size="22"/>
+                  <Label text="Orders" style="-fx-font-size: 10px; -fx-text-fill: #888888;"/>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="4" onMouseClicked="#handleWalletTabBtn">
+               <children>
+                  <FontAwesomeIconView fx:id="walletTabBtn" fill="#888888" glyphName="CREDIT_CARD" size="22"/>
+                  <Label text="Wallet" style="-fx-font-size: 10px; -fx-text-fill: #888888;"/>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="4" onMouseClicked="#handleProfileBtn">
+               <children>
+                  <FontAwesomeIconView fx:id="profileBtn" fill="#888888" glyphName="USER" size="22"/>
+                  <Label text="Profile" style="-fx-font-size: 10px; -fx-text-fill: #888888;"/>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="16.0" left="20.0" right="20.0" top="10.0"/>
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <center>
+      <Pane fx:id="centerPane" prefHeight="558.0" prefWidth="904.0" BorderPane.alignment="CENTER"/>
+   </center>
+</BorderPane>

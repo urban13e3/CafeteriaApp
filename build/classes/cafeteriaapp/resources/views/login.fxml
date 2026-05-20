@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="679.0" styleClass="root" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cafeteriaapp.resources.controllers.LoginController">
+    <center>
+        <StackPane>
+            <GridPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" style="-: white;" styleClass="auth-tab-pane" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1">
+                        <tabs>
+                            <Tab fx:id="loginTab" text="Login">
+                                <content>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" styleClass="form-container">
+                                        <children>
+                                            <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="312.0" styleClass="google-btn" text="Continue with Google">
+                                                <VBox.margin>
+                                                    <Insets top="30.0" />
+                                                </VBox.margin>
+                                            </Button>
+                                            <HBox prefHeight="18.0" prefWidth="312.0">
+                                                <children>
+                                                    <Separator prefHeight="22.0" prefWidth="150.0">
+                                                        <HBox.margin>
+                                                            <Insets />
+                                                        </HBox.margin>
+                                                    </Separator>
+                                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="15.0" prefWidth="31.0" styleClass="or-label" text="or">
+                                                        <font>
+                                                            <Font size="13.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <Separator prefHeight="18.0" prefWidth="138.0" />
+                                                </children>
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </HBox>
+                                            <Label styleClass="field-label" text="Email">
+                                                <VBox.margin>
+                                                    <Insets top="23.0" />
+                                                </VBox.margin>
+                                            </Label>
+                                            <TextField fx:id="emailTextField" prefHeight="37.0" prefWidth="312.0" styleClass="form-field">
+                                                <VBox.margin>
+                                                    <Insets />
+                                                </VBox.margin>
+                                            </TextField>
+                                            <Label styleClass="field-label" text="Password">
+                                                <VBox.margin>
+                                                    <Insets top="20.0" />
+                                                </VBox.margin>
+                                            </Label>
+                                            <StackPane prefHeight="42.0" prefWidth="295.0">
+                                                <children>
+                                                    <TextField fx:id="visiblePasswordField" prefHeight="37.0" styleClass="form-field" visible="false" />
+                                                    <PasswordField fx:id="passwordField" prefHeight="37.0" prefWidth="312.0" styleClass="form-field" />
+                                                    <FontAwesomeIconView fx:id="eyeIcon" fill="#3b5bdb" glyphName="EYE" onMouseClicked="#handleShowPassword" selectionFill="BLACK" size="13" StackPane.alignment="CENTER_RIGHT">
+                                                        <StackPane.margin>
+                                                            <Insets right="10.0" />
+                                                        </StackPane.margin>
+                                                    </FontAwesomeIconView>
+                                                </children>
+                                            </StackPane>
+                                            <Label styleClass="forgot-link" text="Forgot Password">
+                                                <VBox.margin>
+                                                    <Insets top="10.0" />
+                                                </VBox.margin>
+                                            </Label>
+                                            <Button fx:id="continueBtn" mnemonicParsing="false" onAction="#handleLogin" prefHeight="36.0" prefWidth="312.0" styleClass="primary-btn" text="Continue">
+                                                <VBox.margin>
+                                                    <Insets top="20.0" />
+                                                </VBox.margin>
+                                            </Button>
+                                            <HBox prefHeight="22.0" prefWidth="312.0" spacing="15.0">
+                                                <children>
+                                                    <Label styleClass="muted-label" text="Don't have an account?" />
+                                                    <Label fx:id="signUpLabel" onMouseClicked="#switchToSignUpTab" styleClass="link-label" text="Signup" />
+                                                </children>
+                                                <VBox.margin>
+                                                    <Insets top="40.0" />
+                                                </VBox.margin>
+                                                <padding>
+                                                    <Insets left="50.0" />
+                                                </padding>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+                                </content>
+                            </Tab>
+                            <Tab fx:id="signUpTab" text="Signup">
+                        <content>
+                           <VBox prefHeight="200.0" prefWidth="100.0">
+                              <children>
+                                 <Label styleClass="field-label" text="Firstname" />
+                                 <TextField fx:id="firstNameField" prefHeight="37.0" prefWidth="316.0" styleClass="form-field" />
+                                 <Label layoutX="10.0" layoutY="30.0" styleClass="field-label" text="Lastname">
+                                    <VBox.margin>
+                                       <Insets top="20.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <TextField fx:id="lastNameField" layoutX="10.0" layoutY="52.0" prefHeight="37.0" prefWidth="316.0" styleClass="form-field" />
+                                 <Label layoutX="10.0" layoutY="109.0" styleClass="field-label" text="Email">
+                                    <VBox.margin>
+                                       <Insets top="20.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <TextField fx:id="signUpEmailField" layoutX="10.0" layoutY="131.0" prefHeight="37.0" prefWidth="316.0" styleClass="form-field" />
+                                 <Label layoutX="10.0" layoutY="188.0" styleClass="field-label" text="Password">
+                                    <VBox.margin>
+                                       <Insets top="20.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <StackPane prefHeight="40.0" prefWidth="316.0">
+                                    <children>
+                                       <TextField fx:id="signUpVisiblePasswordField" prefHeight="37.0" prefWidth="316.0" styleClass="form-field" />
+                                       <PasswordField fx:id="signUpPasswordField" prefHeight="37.0" prefWidth="316.0" styleClass="form-field" />
+                                       <FontAwesomeIconView fx:id="signUpEyeIcon" fill="#3b5bdb" glyphName="EYE" onMouseClicked="#handleSignUpShowPassword" size="13" StackPane.alignment="CENTER_RIGHT">
+                                          <StackPane.margin>
+                                             <Insets right="10.0" />
+                                          </StackPane.margin>
+                                       </FontAwesomeIconView>
+                                    </children>
+                                 </StackPane>
+                                 <Label layoutX="10.0" layoutY="268.0" styleClass="field-label" text="Confirm Password">
+                                    <VBox.margin>
+                                       <Insets top="20.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <StackPane layoutX="10.0" layoutY="289.0" prefHeight="40.0" prefWidth="316.0">
+                                    <children>
+                                       <TextField fx:id="signUpVisibleConfirmPasswordField" prefHeight="37.0" prefWidth="316.0" styleClass="form-field" />
+                                       <PasswordField fx:id="signUpConfirmPasswordField" prefHeight="37.0" prefWidth="316.0" styleClass="form-field" />
+                                       <FontAwesomeIconView fx:id="signUpConfirmEyeIcon" fill="#3b5bdb" glyphName="EYE" onMouseClicked="#handleSignUpShowConfirmPassword" size="13" StackPane.alignment="CENTER_RIGHT">
+                                          <StackPane.margin>
+                                             <Insets right="10.0" />
+                                          </StackPane.margin>
+                                       </FontAwesomeIconView>
+                                    </children>
+                                 </StackPane>
+                                 <Label fx:id="passwordErrorLabel" prefHeight="14.0" prefWidth="314.0" style="-fx-text-fill: red;" />
+                                 <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="36.0" prefWidth="312.0" styleClass="primary-btn" text="Submit">
+                                    <VBox.margin>
+                                       <Insets top="20.0" />
+                                    </VBox.margin>
+                                 </Button>
+                              </children>
+                              <padding>
+                                 <Insets top="20.0" />
+                              </padding>
+                           </VBox>
+                        </content></Tab>
+                        </tabs>
+                    </TabPane>
+                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="brand-panel">
+                        <children>
+                            <Label styleClass="brand-logo" text="☕" textFill="#ff1919" />
+                            <Label styleClass="brand-name" text="Cafeteria App" />
+                            <Label styleClass="brand-sub" text="Your campus dining, simplified" />
+                        </children>
+                    </VBox>
+                </children>
+            </GridPane>
+            
+            <!-- Overlay on top -->
+            <StackPane fx:id="overlayPane" style="-fx-background-color: rgba(0,0,0,0.35);" visible="false">
+                <ProgressIndicator fx:id="spinner" prefHeight="55" prefWidth="55" />
+            </StackPane>
+        </StackPane>
+    </center>
+</BorderPane>
